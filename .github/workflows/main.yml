@@ -20,6 +20,9 @@ jobs:
           git remote add upstream https://github.com/BennyThadikaran/eod2_data
           git fetch upstream
           git rebase upstream/main
+      - name: Configure pull strategy
+        run: |
+          git config pull.rebase true  # Configure to rebase divergent branches
       - name: Pull changes from origin
         run: |
           git pull origin main
