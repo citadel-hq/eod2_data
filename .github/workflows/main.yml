@@ -15,17 +15,13 @@ jobs:
         run: |
           git config user.name "shikharvaish28"
           git config user.email "shikarvaish@gmail.com"
-      - name: Rebase from upstream
+      - name: Fetch upstream changes
         run: |
           git remote add upstream https://github.com/BennyThadikaran/eod2_data
           git fetch upstream
-          git rebase upstream/main
-      - name: Configure pull strategy
+      - name: Merge changes from upstream/main into main
         run: |
-          git config pull.rebase true  # Configure to rebase divergent branches
-      - name: Pull changes from origin
-        run: |
-          git pull origin main
+          git merge upstream/main --no-edit
       - name: Push changes
         run: |
           git push origin main
